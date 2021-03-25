@@ -7,7 +7,7 @@ export default (path1, path2) => {
   const file2 = fs.readFileSync(path.resolve(process.cwd(), path2));
   const firstJson = JSON.parse(file1);
   const secondJson = JSON.parse(file2);
-  const allKeys = _.uniq([...Object.keys(firstJson), ...Object.keys(secondJson)]);
+  const allKeys = _.uniq([...Object.keys(firstJson), ...Object.keys(secondJson)]).sort();
   const result = allKeys.reduce((acc, el) => {
     if (!_.has(secondJson, el)) {
       return [...acc, `   - ${el} : ${firstJson[el]}`];
