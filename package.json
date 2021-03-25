@@ -2,10 +2,10 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/Peredery/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Peredery/frontend-project-lvl2/actions)",
-  "main": "index.js",
+  "main": "./src/genDiff.js",
   "type": "module",
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff": "./bin/gendiff.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -41,7 +41,8 @@
     "jest-cli": "^26.6.3"
   },
   "dependencies": {
-    "commander": "^7.2.0"
+    "commander": "^7.2.0",
+    "lodash": "^4.17.21"
   },
   "config": {
     "commitizen": {
