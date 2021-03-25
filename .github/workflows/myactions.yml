@@ -16,13 +16,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: npm i
-        uses: npm i
+        run: make install
 
       - name: Linting code
-        uses: make lint
+        run: make lint
 
       - name: Run tests
-        uses: make test
+        run: make test
 
       - name: Test & publish code coverage
         # https://github.com/paambaati/codeclimate-action
