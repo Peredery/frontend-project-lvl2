@@ -42,6 +42,7 @@ export default (path1, path2, format = 'stylish') => {
   const firstParsed = getData(firstFile, path.extname(path1));
   const secondParsed = getData(secondFile, path.extname(path2));
   const ast = buildAst(firstParsed, secondParsed);
+  console.log(format);
   console.log(JSON.stringify(ast, null, 2));
   // const result = allKeys.reduce((acc, el) => {
   //   if (!_.has(secondParsed, el)) {
