@@ -4,7 +4,7 @@ const buildAst = (before, after) => {
   const allKeys = _.union([...Object.keys(before), ...Object.keys(after)]).sort();
   return allKeys.map(
     (key) => {
-      let status = '';
+      let status = 'unchanged';
       const beforeValue = before[key];
       const afterValue = after[key];
       if (_.isObject(beforeValue) && _.isObject(afterValue)) {
