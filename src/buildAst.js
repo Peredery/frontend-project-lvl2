@@ -8,40 +8,23 @@ const buildAst = (before, after) => {
       const afterValue = after[key];
       if (!_.has(before, key)) {
         return {
-          key,
-          status: 'added',
-          beforeValue,
-          value: afterValue,
+          key, status: 'added', beforeValue, value: afterValue,
         };
       }
       if (!_.has(after, key)) {
         return {
-          key,
-          status: 'removed',
-          beforeValue,
-          value: afterValue,
+          key, status: 'removed', beforeValue, value: afterValue,
         };
       }
       if (_.isObject(beforeValue) && _.isObject(afterValue)) {
-        return {
-          key,
-          status: 'nested',
-          children: buildAst(beforeValue, afterValue),
-        };
+        return { key, status: 'nested', children: buildAst(beforeValue, afterValue) };
       }
       if (!_.isEqual(beforeValue, afterValue)) {
         return {
-          key,
-          status: 'changed',
-          beforeValue,
-          value: afterValue,
+          key, status: 'changed', beforeValue, value: afterValue,
         };
       }
-      return {
-        key,
-        status: 'unchanged',
-        value: afterValue,
-      };
+      return { key, status: 'unchanged', value: afterValue };
     },
   );
 };
