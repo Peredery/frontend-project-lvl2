@@ -1,5 +1,7 @@
 install:
 	npm i
+
+link:
 	npm link
 
 run:
