@@ -1,5 +1,6 @@
 install:
 	npm i
+	npm link
 
 run:
 	node bin/gendiff.js
