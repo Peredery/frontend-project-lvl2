@@ -11,7 +11,7 @@ const buildAst = (before, after) => {
       if (_.isObject(beforeValue) && _.isObject(afterValue)) {
         status = 'nested';
         const children = buildAst(before[key], after[key]);
-        return { key, status, afterValue: children };
+        return { key, status, children };
       }
 
       if (beforeValue !== afterValue) {
