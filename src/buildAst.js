@@ -7,6 +7,7 @@ const buildAst = (before, after) => {
       let status = 'unchanged';
       const beforeValue = before[key];
       const afterValue = after[key];
+      let value = beforeValue;
       if (_.isObject(beforeValue) && _.isObject(afterValue)) {
         status = 'nested';
         const children = buildAst(before[key], after[key]);
@@ -15,20 +16,23 @@ const buildAst = (before, after) => {
 
       if (beforeValue !== afterValue) {
         status = 'changed';
+        value = afterValue;
       }
 
       if (!_.has(after, [key])) {
+        value = beforeValue;
         status = 'removed';
       }
 
       if (!_.has(before, [key])) {
         status = 'added';
+        value = afterValue;
       }
 
       return {
         key,
         beforeValue,
-        afterValue,
+        value,
         status,
       };
     },
