@@ -18,6 +18,19 @@ Options:
   -h, --help           display help for command
 ```
 
+## How to install
+
+```bash
+make install
+make link
+```
+
+Now you can use gendiff
+
+```bash
+gendiff file1.json file2.json -f stylish
+```
+
 ## --format stylish
 
 [![asciicast](https://asciinema.org/a/rHBb8oELYQmrLc0g3rh9IvEyi.svg)](https://asciinema.org/a/rHBb8oELYQmrLc0g3rh9IvEyi)
