@@ -5,8 +5,8 @@ const serialize = (value) => {
   return _.isString(value) ? `'${value}'` : value;
 };
 
-const iter = (iterAst, path) => {
-  const result = iterAst.map((node) => {
+const render = (iterAst, path = []) => {
+  const result = _.compact(iterAst.map((node) => {
     const curPath = [...path, node.key].join('.');
     switch (node.status) {
       case 'added':
@@ -16,14 +16,12 @@ const iter = (iterAst, path) => {
       case 'changed':
         return `Property '${curPath}' was updated. From ${serialize(node.beforeValue)} to ${serialize(node.value)}`;
       case 'nested':
-        return iter(node.children, [...path, node.key]);
+        return render(node.children, [...path, node.key]);
       default:
         return '';
     }
-  });
-  return result.filter((el) => el).join('\n');
+  }));
+  return result.join('\n');
 };
-
-const render = (ast) => iter(ast, []);
 
 export default render;
