@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
+import fs from 'fs';
 import { Command } from 'commander/esm.mjs';
 import genDiff from '../src/genDiff.js';
+
+const pkg = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url)));
 
 const program = new Command();
 
 program
-  .version('1.1.0')
+  .version(pkg.version)
   .description('Compares two configuration files and shows a difference.')
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format', 'stylish')
