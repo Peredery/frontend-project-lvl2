@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
-import { Command } from 'commander/esm.mjs';
+import { Command } from 'commander';
 import genDiff from '../src/genDiff.js';
 
 const pkg = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url)));

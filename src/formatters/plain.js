@@ -8,7 +8,7 @@ const serialize = (value) => {
 const render = (iterAst, path = []) => {
   const result = _.compact(iterAst.map((node) => {
     const curPath = [...path, node.key].join('.');
-    switch (node.status) {
+    switch (node.type) {
       case 'added':
         return `Property '${curPath}' was added with value: ${serialize(node.value)}`;
       case 'removed':

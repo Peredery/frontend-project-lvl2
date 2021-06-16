@@ -17,7 +17,7 @@ const iter = (iterAst, iterDepth) => {
     nested: (node, depth) => `${space(depth)}    ${node.key}: ${iter(node.children, depth + 1)}`,
   };
 
-  const result = iterAst.map((node) => renderMap[node.status](node, iterDepth));
+  const result = iterAst.map((node) => renderMap[node.type](node, iterDepth));
   return ['{', ...result, `${space(iterDepth)}}`].join('\n');
 };
 
