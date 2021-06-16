@@ -8,6 +8,10 @@ const renderDispatch = {
   json: jsonRender,
 };
 
-const render = (format, ast) => renderDispatch[format](ast);
+const render = (format, ast) => {
+  const renderMethod = renderDispatch[format];
+  if (renderMethod === undefined) return new Error(`doesn't support this format: ${format}`);
+  return renderMethod(ast);
+};
 
 export default render;
